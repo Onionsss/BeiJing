@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             tools:context="onionsss.it.smartbeijing.fragment.ContentFragment">
+    <onionsss.it.smartbeijing.view.MyViewPager
+        android:id="@+id/content_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <RadioGroup
+        android:id="@+id/main_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:id="@+id/main_rb_home"
+            android:text="首页"
+            android:drawableTop="@drawable/home_select"
+            style="@style/main_radioButton"/>
+
+        <RadioButton
+            android:id="@+id/main_rb_ramble"
+            android:drawableTop="@drawable/ramble_select"
+            style="@style/main_radioButton"
+            android:text="逛逛"
+           />
+
+        <RadioButton
+            android:id="@+id/main_rb_dialog"
+            android:drawableTop="@drawable/dialog_select"
+            style="@style/main_radioButton"
+            android:text="消息"
+           />
+
+        <RadioButton
+            android:id="@+id/main_rb_my"
+            android:drawableTop="@drawable/my_select"
+            style="@style/main_radioButton"
+            android:text="我的"/>
+    </RadioGroup>
+
+</LinearLayout>
