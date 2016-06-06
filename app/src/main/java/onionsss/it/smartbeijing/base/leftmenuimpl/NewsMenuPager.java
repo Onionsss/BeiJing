@@ -27,11 +27,12 @@ public class NewsMenuPager extends BaseLeftMenuPage{
     private List<NewsChildPager> mList;
     private TabPageIndicator mTitleIndicator;
     private ImageView mIndicator_iv_next;
+    private List<Categories.DataBean.ChildrenBean> mChildren;
 
 
-    public NewsMenuPager(Activity activity,Categories Categories) {
+    public NewsMenuPager(Activity activity,List<Categories.DataBean.ChildrenBean> children) {
         super(activity);
-        mCategories = Categories;
+        mChildren = children;
     }
 
     @Override
@@ -58,6 +59,7 @@ public class NewsMenuPager extends BaseLeftMenuPage{
         mNewsmenu_viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
 
             @Override
@@ -71,6 +73,7 @@ public class NewsMenuPager extends BaseLeftMenuPage{
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
 
@@ -93,15 +96,15 @@ public class NewsMenuPager extends BaseLeftMenuPage{
      */
     private void initPagers() {
         mList = new ArrayList<>();
-        for(int i = 0;i<mCategories.getData().get(0).getChildren().size();i++){
-            mList.add(new NewsChildPager(mActivity,mCategories,i));
+        for(int i = 0;i<mChildren.size();i++){
+            mList.add(new NewsChildPager(mActivity,mChildren,i));
         }
     }
 
     class MyPagerAdapter extends PagerAdapter {
         @Override
         public CharSequence getPageTitle(int position) {
-            return mCategories.getData().get(0).getChildren().get(position).getTitle();
+            return mChildren.get(position).getTitle();
         }
 
         @Override

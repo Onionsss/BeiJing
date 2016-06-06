@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="330dp">
+                <onionsss.it.smartbeijing.view.TopViewPager
+                    android:id="@+id/news_childpager_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </onionsss.it.smartbeijing.view.TopViewPager>
+                <RelativeLayout
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/news_childpager_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="#a555"
+                                    android:padding="5dp"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black_0"
+                                    android:text="标题"/>
+                        <com.viewpagerindicator.CirclePageIndicator
+                            android:id="@+id/news_childpager_circle"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:padding="5dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            app:fillColor="#f00"
+                            app:pageColor="#999"
+                            android:layout_marginRight="10dp"
+                            />
+                </RelativeLayout>
+        </FrameLayout>
+
+</LinearLayout>

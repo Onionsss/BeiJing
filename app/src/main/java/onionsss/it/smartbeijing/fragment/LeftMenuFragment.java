@@ -12,7 +12,7 @@ import onionsss.it.smartbeijing.bean.Categories;
  * 作者：张琦 on 2016/5/29 20:05
  */
 public class LeftMenuFragment extends BaseFragment{
-    public static int mEnablePosition;
+    public int mEnablePosition;
     /**
      * json解析的新闻数据
      */
@@ -39,13 +39,13 @@ public class LeftMenuFragment extends BaseFragment{
      */
     public void setData(Categories categories){
         this.mCategories = categories;
+        mLeftMenuAdapter = new LeftMenuAdapter(mActivity, mCategories,this);
         initAdapter();
     }
     /**
      * 给ListView设置数据
      */
     private void initAdapter() {
-        mLeftMenuAdapter = new LeftMenuAdapter(mActivity, mCategories,this);
         mLeftmenu_lv.setAdapter(mLeftMenuAdapter);
         initListener();
     }
@@ -66,7 +66,6 @@ public class LeftMenuFragment extends BaseFragment{
      * @param position
      */
     private void setClickPager(int position) {
-//        mHomeAct.getContentFragment();
         mContentFragment.getRamblePager().setLeftMenuClickPager(position);
     }
 

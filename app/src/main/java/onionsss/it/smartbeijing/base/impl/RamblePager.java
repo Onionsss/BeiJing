@@ -29,8 +29,6 @@ import onionsss.it.smartbeijing.utils.OkUtils;
  * 作者：张琦 on 2016/5/29 21:47
  */
 public class RamblePager extends BasePager implements View.OnClickListener {
-    public static final int JSON_OK = 101;
-    public static final int NET_ERROR = 102;
     public static final String JSON_LOCAL = HttpConstant.SERVER_ADDRESS + HttpConstant.CATEGORIES;
     private List<BaseLeftMenuPage> mList;
     /**
@@ -42,10 +40,10 @@ public class RamblePager extends BasePager implements View.OnClickListener {
         @Override
         public void handleMessage(Message msg) {
             switch(msg.what){
-                case JSON_OK:
+                case HttpConstant.JSON_OK:
                     formatGson((String)msg.obj);
                 break;
-                case NET_ERROR:
+                case HttpConstant.NET_ERROR:
                     break;
             }
         }
@@ -69,10 +67,6 @@ public class RamblePager extends BasePager implements View.OnClickListener {
          */
         initJson();
         /**
-         * 加载页面
-         */
-        initPager();
-        /**
          * 点击事件
          */
         initListener();
@@ -85,7 +79,7 @@ public class RamblePager extends BasePager implements View.OnClickListener {
         if(mList == null){
             mList = new ArrayList<>();
         }
-        mList.add(new NewsMenuPager(mActivity,mCategories));
+        mList.add(new NewsMenuPager(mActivity,mCategories.getData().get(0).getChildren()));
         mList.add(new SeminarMenuPager(mActivity));
         mList.add(new ImageMenuPager(mActivity));
         mList.add(new InteractMenuPager(mActivity));
@@ -120,12 +114,11 @@ public class RamblePager extends BasePager implements View.OnClickListener {
                      * 读取到json 放入缓存中
                      * url当作文件名 json作为内容
                      */
-                    JsonCache.CacheJson(HttpConstant.SERVER_ADDRESS + HttpConstant.CATEGORIES,json,mActivity);
-
-                    msg.what = JSON_OK;
+                    JsonCache.CacheJson(JSON_LOCAL,json,mActivity);
+                    msg.what = HttpConstant.JSON_OK;
                     msg.obj = json;
                 } catch (IOException e) {
-                    msg.what = NET_ERROR;
+                    msg.what = HttpConstant.NET_ERROR;
                     e.printStackTrace();
                 }finally {
                     handler.sendMessage(msg);
@@ -145,6 +138,11 @@ public class RamblePager extends BasePager implements View.OnClickListener {
          * 解析完Json即可给侧边栏设置数据
          */
         setLeftMenuData();
+        /**
+         * 加载页面
+         */
+        initPager();
+
     }
 
     /**

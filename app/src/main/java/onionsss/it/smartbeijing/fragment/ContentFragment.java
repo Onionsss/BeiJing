@@ -88,10 +88,12 @@ public class ContentFragment extends BaseFragment {
     }
 
     private void initPageChange() {
-        mViewpager_loading.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mViewpager_loading.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
             }
+
             @Override
             public void onPageSelected(int position) {
                 mList.get(position).initData();
@@ -107,6 +109,7 @@ public class ContentFragment extends BaseFragment {
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }

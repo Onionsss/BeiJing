@@ -47,7 +47,8 @@ public abstract class BaseFragment extends Fragment{
         initData();
     }
 
-    public void initData(){};
+    public void initData(){
+    };
     /**
      * 打开或者关闭sliding
      * 定义在父类中 供子类使用
